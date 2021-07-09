@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/drawer_top">
+        <item
+            android:id="@+id/drawer_dictionary"
+            android:title="@string/drawer_dictionary"
+            android:icon="@drawable/ic_baseline_g_translate_24"/>
+
+        <item
+            android:id="@+id/drawer_translator"
+            android:title="@string/drawer_translator"
+            android:icon="@drawable/ic_baseline_g_translate_24"/>
+
+        <item
+            android:id="@+id/drawer_favourite"
+            android:title="@string/drawer_favourite"
+            android:icon="@drawable/ic_baseline_favorite_24"/>
+
+        <item
+            android:id="@+id/drawer_history"
+            android:title="@string/drawer_history"
+            android:icon="@drawable/ic_baseline_history_24"/>
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/drawer_middle">
+        <item
+            android:id="@+id/drawer_go_premium"
+            android:title="@string/drawer_go_premium"
+            android:icon="@drawable/ic_baseline_attach_money_24"/>
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/drawer_bottom">
+        <item
+            android:id="@+id/drawer_setting"
+            android:title="@string/drawer_setting"
+            android:icon="@drawable/ic_baseline_settings_24"/>
+
+        <item
+            android:id="@+id/drawer_help"
+            android:title="@string/drawer_help"
+            android:icon="@drawable/ic_baseline_help_outline_24"/>
+
+        <item
+            android:id="@+id/drawer_rate"
+            android:title="@string/drawer_rate"
+            android:icon="@drawable/ic_baseline_rate_review_24"/>
+    </group>
+</menu>
