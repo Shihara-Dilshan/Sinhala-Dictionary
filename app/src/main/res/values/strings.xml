@@ -8,4 +8,7 @@
     <string name="drawer_setting">Settings</string>
     <string name="drawer_help">Help</string>
     <string name="drawer_rate">Rate this App</string>
+    <string name="drawer_like_us">Like us on Facebook</string>
+    <string name="drawer_share">Share this App</string>
+    <string name="drawer_about">About</string>
 </resources>

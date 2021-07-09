@@ -9,7 +9,7 @@
         <item
             android:id="@+id/drawer_dictionary"
             android:title="@string/drawer_dictionary"
-            android:icon="@drawable/ic_baseline_g_translate_24"/>
+            android:icon="@drawable/ic_baseline_text_format_24"/>
 
         <item
             android:id="@+id/drawer_translator"
@@ -19,7 +19,7 @@
         <item
             android:id="@+id/drawer_favourite"
             android:title="@string/drawer_favourite"
-            android:icon="@drawable/ic_baseline_favorite_24"/>
+            android:icon="@drawable/ic_baseline_favorite_border_24"/>
 
         <item
             android:id="@+id/drawer_history"
@@ -53,5 +53,20 @@
             android:id="@+id/drawer_rate"
             android:title="@string/drawer_rate"
             android:icon="@drawable/ic_baseline_rate_review_24"/>
+
+        <item
+            android:id="@+id/drawer_like_us"
+            android:title="@string/drawer_like_us"
+            android:icon="@drawable/ic_outline_thumb_up_24"/>
+
+        <item
+            android:id="@+id/drawer_share"
+            android:title="@string/drawer_share"
+            android:icon="@drawable/ic_baseline_share_24"/>
+
+        <item
+            android:id="@+id/drawer_about"
+            android:title="@string/drawer_about"
+            android:icon="@drawable/ic_baseline_error_outline_24"/>
     </group>
 </menu>
