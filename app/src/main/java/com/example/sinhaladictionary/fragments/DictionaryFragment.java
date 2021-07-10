@@ -17,9 +17,9 @@ import android.widget.Toast;
 import com.example.sinhaladictionary.R;
 
 public class DictionaryFragment extends Fragment implements View.OnClickListener  {
-    Button englishBtn, sinhalaBtn;
-    Resources res;
-    Drawable btnSelected, btnNotSelected;
+    private Button englishBtn, sinhalaBtn;
+    private Resources res;
+    private Drawable btnSelected, btnNotSelected;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
