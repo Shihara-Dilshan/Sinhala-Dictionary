@@ -9,6 +9,7 @@
         <item
             android:id="@+id/drawer_dictionary"
             android:title="@string/drawer_dictionary"
+            android:iconTint="@color/white"
             android:icon="@drawable/ic_baseline_text_format_24"/>
 
         <item

@@ -17,4 +17,7 @@
 
     <string name="nevigation_drawer_opem">Open Navigation Drawer</string>
     <string name="nevigation_drawer_close">Close Navigation Drawer</string>
+
+    <string name="english">English</string>
+    <string name="sinhala">Sinahala</string>
 </resources>
