@@ -1,5 +1,6 @@
 package com.example.sinhaladictionary.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sinhaladictionary.R;
+import com.example.sinhaladictionary.Results;
 import com.example.sinhaladictionary.adapters.WordAdapter;
 import com.example.sinhaladictionary.models.EnglishWord;
 
@@ -116,7 +119,14 @@ public class EnglishWords extends Fragment {
         linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         englishWordRecyclerView.setLayoutManager(linearLayoutManager);
-        wordAdapter = new WordAdapter(englishWordlist);
+        wordAdapter = new WordAdapter(englishWordlist, new WordAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(EnglishWord englishWord) {
+                Intent intent = new Intent(getContext(), Results.class);
+                intent.putExtra("word", englishWord.getWord());
+                startActivity(intent);
+            }
+        });
         englishWordRecyclerView.setAdapter(wordAdapter);
         wordAdapter.notifyDataSetChanged();
     }
