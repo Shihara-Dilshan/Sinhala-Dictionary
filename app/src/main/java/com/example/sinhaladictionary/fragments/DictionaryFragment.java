@@ -37,7 +37,7 @@ public class DictionaryFragment extends Fragment implements View.OnClickListener
         englishBtn.setOnClickListener(this);
         sinhalaBtn.setOnClickListener(this);
 
-        navigateSinhalaWordScreen();
+        navigateEnglishWordScreen();
 
         return view;
     }

@@ -3,13 +3,18 @@ package com.example.sinhaladictionary.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.sinhaladictionary.R;
+import com.example.sinhaladictionary.adapters.WordAdapter;
 import com.example.sinhaladictionary.models.EnglishWord;
 
 import org.json.JSONArray;
@@ -29,29 +34,31 @@ import java.util.List;
 
 
 public class EnglishWords extends Fragment {
+    private LinearLayout spinnerContainer;
+    private RecyclerView englishWordRecyclerView;
+    private LinearLayoutManager linearLayoutManager;
+    private List<EnglishWord> englishWordlist;
+    private WordAdapter wordAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                HashMap<String, Object> data= null;
-                try {
-                    data = englishDictionaryData();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                List<EnglishWord> dddd= (List<EnglishWord>) data.get("englishWordsArrayList");
-                for(EnglishWord x : dddd){
-                    System.out.println(x.getWord());
-                    System.out.println(2);
-                }
-            }
-        });
-        thread.start();
         View view = inflater.inflate(R.layout.fragment_english_words, container, false);
-        TextView textView = view.findViewById(R.id.sdsd);
-        textView.setText("Sdsdsddddz");
+        spinnerContainer = view.findViewById(R.id.spinner_container);
+        englishWordRecyclerView = view.findViewById(R.id.recyclerViewEnglishWords);
+
+        HashMap<String, Object> data= null;
+        try {
+            data = englishDictionaryData();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        englishWordlist = (List<EnglishWord>) data.get("englishWordsArrayList");
+        spinnerContainer.setVisibility(View.GONE);
+        englishWordRecyclerView.setVisibility(View.VISIBLE);
+
+        initRecycleView(view);
+
         return view;
     }
 
@@ -102,5 +109,15 @@ public class EnglishWords extends Fragment {
         thread.start();
         thread.join();
         return data;
+    }
+
+    private void initRecycleView(View view){
+        englishWordRecyclerView = view.findViewById(R.id.recyclerViewEnglishWords);
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        englishWordRecyclerView.setLayoutManager(linearLayoutManager);
+        wordAdapter = new WordAdapter(englishWordlist);
+        englishWordRecyclerView.setAdapter(wordAdapter);
+        wordAdapter.notifyDataSetChanged();
     }
 }
