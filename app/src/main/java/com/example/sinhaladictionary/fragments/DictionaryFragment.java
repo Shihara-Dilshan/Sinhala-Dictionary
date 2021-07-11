@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sinhaladictionary.R;
@@ -36,6 +37,8 @@ public class DictionaryFragment extends Fragment implements View.OnClickListener
         englishBtn.setOnClickListener(this);
         sinhalaBtn.setOnClickListener(this);
 
+        navigateSinhalaWordScreen();
+
         return view;
     }
 
@@ -47,13 +50,29 @@ public class DictionaryFragment extends Fragment implements View.OnClickListener
                 englishBtn.setTextColor(Color.parseColor("#ffffff"));
                 sinhalaBtn.setTextColor(Color.parseColor("#CFCECE"));
                 sinhalaBtn.setBackground(btnNotSelected);
+                navigateEnglishWordScreen();
                 break;
             case R.id.btn_sinhala:
                 sinhalaBtn.setBackground(btnSelected);
                 englishBtn.setBackground(btnNotSelected);
                 sinhalaBtn.setTextColor(Color.parseColor("#ffffff"));
                 englishBtn.setTextColor(Color.parseColor("#CFCECE"));
+                navigateSinhalaWordScreen();
                 break;
         }
+    }
+
+    public void navigateEnglishWordScreen(){
+        androidx.fragment.app.FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.dic_result, new EnglishWords())
+                .commit();
+    }
+
+    public void navigateSinhalaWordScreen(){
+        androidx.fragment.app.FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.dic_result, new SinhalaWords())
+                .commit();
     }
 }
