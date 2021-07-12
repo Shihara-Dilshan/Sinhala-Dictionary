@@ -124,6 +124,7 @@ public class EnglishWords extends Fragment {
             public void onItemClick(EnglishWord englishWord) {
                 Intent intent = new Intent(getContext(), Results.class);
                 intent.putExtra("word", englishWord.getWord());
+                intent.putExtra("definitions", englishWord.getDefinition());
                 startActivity(intent);
             }
         });
