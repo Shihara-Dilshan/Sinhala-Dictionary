@@ -76,7 +76,7 @@ public class EnglishWords extends Fragment {
 
                 InputStream is = getResources().openRawResource(R.raw.en2sn);
                 Writer writer = new StringWriter();
-                char[] buffer = new char[11024];
+                char[] buffer = new char[1024];
                 try{
                     Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
                     int n;
