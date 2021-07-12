@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -64,7 +65,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="190dp"
                         android:orientation="vertical">
 
                         <EditText
@@ -83,6 +84,107 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:padding="10dp"
+                        android:orientation="horizontal">
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:layout_weight="1"
+                           android:orientation="horizontal">
+
+                           <LinearLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="1"
+                               android:orientation="vertical"
+                               android:gravity="center_horizontal">
+
+                               <com.google.android.material.imageview.ShapeableImageView
+                                   android:layout_width="match_parent"
+                                   android:layout_weight="7"
+                                   android:src="@drawable/ic_baseline_mic_24"
+                                   android:layout_height="wrap_content"/>
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="Voice"/>
+                           </LinearLayout>
+                           <LinearLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="1"
+                               android:gravity="center_horizontal"
+                               android:orientation="vertical">
+
+                               <com.google.android.material.imageview.ShapeableImageView
+                                   android:layout_width="match_parent"
+                                   android:layout_weight="7"
+                                   android:src="@drawable/ic_outline_camera_alt_24"
+                                   android:layout_height="wrap_content"/>
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="Camera"/>
+                           </LinearLayout>
+                           <LinearLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="1"
+                               android:gravity="center_horizontal"
+                               android:orientation="vertical">
+
+                               <com.google.android.material.imageview.ShapeableImageView
+                                   android:layout_width="match_parent"
+                                   android:layout_weight="7"
+                                   android:src="@drawable/ic_outline_image_24"
+                                   android:layout_height="wrap_content"/>
+                               <TextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="Gallery"/>
+                           </LinearLayout>
+                       </LinearLayout>
+                       <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                           android:layout_weight="1"
+                           android:padding="2dp"
+                           android:orientation="horizontal">
+
+
+                           <Button
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:text="TRANSLATE"
+                               android:textColor="@color/black"
+                               android:drawableLeft="@drawable/ic_baseline_g_translate_24"
+                               android:background="@color/green_dark"/>
+                       </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="5dp"
+                android:translationZ="4dp"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:padding="10dp"
                         android:orientation="horizontal">
@@ -92,7 +194,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textSize="18sp"
-                            android:text="English"/>
+                            android:text="Sinhala"/>
 
                         <View
                             android:layout_width="0.1dp"
@@ -100,27 +202,60 @@
                             android:background="@android:color/darker_gray"/>
 
 
-                        <com.google.android.material.imageview.ShapeableImageView
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_weight="7"
-                            android:src="@drawable/ic_outline_clear_24"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_weight="1">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_baseline_volume_up_24" />
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_baseline_content_copy_24" />
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_baseline_remove_red_eye_24" />
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_baseline_share_24_grey" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="@android:color/darker_gray"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:background="#00FFFFFF"
+                            android:textSize="14sp"
+                            android:textColor="#686868"
+                            android:padding="10dp"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="@android:color/darker_gray"/>
+
+
                 </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_margin="5dp"
-                android:translationZ="4dp"
-                app:cardCornerRadius="6dp"
-                app:cardElevation="0dp">
-
-
 
             </androidx.cardview.widget.CardView>
 
