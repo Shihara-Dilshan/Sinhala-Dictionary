@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sinhaladictionary.fragments.DictionaryFragment;
+import com.example.sinhaladictionary.fragments.TranslatorFragment;
 import com.example.sinhaladictionary.models.EnglishWord;
 import com.example.sinhaladictionary.models.SinhalaWord;
 import com.google.android.material.navigation.NavigationView;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        mountFragment();
+        mountDictionaryFragment();
         getSupportActionBar().setElevation(0);
 
     }
@@ -90,10 +91,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    public void mountFragment(){
+    public void mountDictionaryFragment(){
         androidx.fragment.app.FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.main_frame, new DictionaryFragment())
+                .commit();
+    }
+
+    public void mountTranslatorFragment(){
+        androidx.fragment.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.main_frame, new TranslatorFragment())
                 .commit();
     }
 
@@ -102,12 +110,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = new Intent(this, SettingsActivity.class);
         switch (item.getItemId()){
             case R.id.drawer_dictionary:
-                mountFragment();
+                mountDictionaryFragment();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.drawer_translator:
+                mountTranslatorFragment();
                 drawerLayout.closeDrawer(GravityCompat.START);
-                Toast.makeText(this, "translatr clicked", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.drawer_setting:
                 startActivity(intent);
