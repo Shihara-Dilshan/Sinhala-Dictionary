@@ -38,4 +38,10 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="final_Description">
+        The content of this app is believed to be accurate but may contain information from third parties. We are not able to review all the content provided in the dictionary hence we do not warrant, endorse, guarantee, or assume responsibility for the accuracy or reliability of any information offered. If you find erroneous or inappropriate content, please report it to us and we will correct it as soon as possible.
+    </string>
+    <string name="final_Description2">
+        The online search definitions and thesaurus are compiled based on third-party sources and believed to be reliable, but is not guaranteed as to its accuracy or completeness of the definitions displayed. Help as improve translation quality by rating the result. Your ratings will immensely contribute to add new words and phrases to the database regularly and provide you with more accurate search results. Thank-you in advance.
+    </string>
 </resources>
