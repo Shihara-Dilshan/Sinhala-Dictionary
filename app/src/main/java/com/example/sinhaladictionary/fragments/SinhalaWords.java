@@ -41,7 +41,19 @@ public class SinhalaWords extends Fragment {
     private LinearLayoutManager linearLayoutManager;
     private List<EnglishWord> sinhalaWordlist;
     private WordAdapter wordAdapter;
+    private static SinhalaWords sinhalaWords = null;
 
+
+    public static SinhalaWords getSinhalaWordObj(){
+        if(sinhalaWords == null){
+            sinhalaWords = new SinhalaWords();
+        }
+        return sinhalaWords;
+    }
+
+    private SinhalaWords(){
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -127,4 +139,9 @@ public class SinhalaWords extends Fragment {
         sinhalaWordRecyclerView.setAdapter(wordAdapter);
         wordAdapter.notifyDataSetChanged();
     }
+
+    public void myFilter(String searchInput){
+        wordAdapter.getFilter().filter(searchInput);
+    }
+
 }

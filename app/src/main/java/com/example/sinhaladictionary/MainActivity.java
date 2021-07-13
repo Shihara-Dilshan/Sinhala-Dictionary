@@ -9,16 +9,22 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.sinhaladictionary.adapters.WordAdapter;
 import com.example.sinhaladictionary.fragments.DictionaryFragment;
+import com.example.sinhaladictionary.fragments.EnglishWords;
+import com.example.sinhaladictionary.fragments.SinhalaWords;
 import com.example.sinhaladictionary.fragments.TranslatorFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -26,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private int menuResource;
+    private DictionaryFragment dictionaryFragment;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -45,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         menuResource = R.menu.search_menu;
+        dictionaryFragment = new DictionaryFragment();
         mountDictionaryFragment();
         getSupportActionBar().setElevation(0);
 
@@ -60,10 +68,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        Toast.makeText(this, "called", Toast.LENGTH_SHORT).show();
+    public boolean onCreateOptionsMenu(Menu menu)  {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(menuResource, menu);
+
+
+        try{
+            MenuItem menuItem = menu.findItem(R.id.searchBaricon);
+            SearchView searchView = (SearchView)menuItem.getActionView();
+            searchView.setQueryHint("Search...");
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    System.out.println("sumbit");
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    try{
+                        EnglishWords.getEnglishWordObj().myFilter(newText);
+                        SinhalaWords.getSinhalaWordObj().myFilter(newText);
+                    }catch (NullPointerException e){
+
+                    }
+
+                    return false;
+                }
+            });
+        }catch(NullPointerException NPE){
+
+        }
+
+
         return true;
     }
 
@@ -102,11 +140,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawerLayout.closeDrawer(GravityCompat.START);
                 openDialog();
                 break;
+            case R.id.drawer_share:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                openShareOptions();
+                break;
+            case R.id.drawer_like_us:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                shareOnFacebook();
+                break;
+            case R.id.drawer_rate:
+                openPlayStore();
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
         }
         return true;
     }
 
-    public void openDialog() {
+    private void openDialog() {
         int width = (int)(getResources().getDisplayMetrics().widthPixels*0.95);
         int height = (int)(getResources().getDisplayMetrics().heightPixels*0.95);
 
@@ -115,5 +165,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dialog.setTitle("About");
         dialog.getWindow().setLayout(width, height);
         dialog.show();
+    }
+
+    private void openShareOptions(){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        String messageBody = "My body";
+        String subject = "Sinhala Dictionary clone created by Shihara Dilshan";
+        intent.putExtra(Intent.EXTRA_SUBJECT, messageBody);
+        intent.putExtra(Intent.EXTRA_TEXT, subject);
+        startActivity(intent);
+    }
+
+    private void shareOnFacebook(){
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com"));
+        startActivity(intent);
+    }
+
+    private void openPlayStore(){
+        final String appPackageName = getPackageName();
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+        } catch (android.content.ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+        }
     }
 }

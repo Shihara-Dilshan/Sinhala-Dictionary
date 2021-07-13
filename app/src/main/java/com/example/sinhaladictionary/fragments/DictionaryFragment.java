@@ -66,14 +66,14 @@ public class DictionaryFragment extends Fragment implements View.OnClickListener
     public void navigateEnglishWordScreen(){
         androidx.fragment.app.FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.dic_result, new EnglishWords())
+                .replace(R.id.dic_result, EnglishWords.getEnglishWordObj())
                 .commit();
     }
 
     public void navigateSinhalaWordScreen(){
         androidx.fragment.app.FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.dic_result, new SinhalaWords())
+                .replace(R.id.dic_result, SinhalaWords.getSinhalaWordObj())
                 .commit();
     }
 }

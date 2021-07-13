@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sinhaladictionary.MainActivity;
 import com.example.sinhaladictionary.R;
 import com.example.sinhaladictionary.Results;
 import com.example.sinhaladictionary.adapters.WordAdapter;
@@ -41,7 +42,19 @@ public class EnglishWords extends Fragment {
     private RecyclerView englishWordRecyclerView;
     private LinearLayoutManager linearLayoutManager;
     private List<EnglishWord> englishWordlist;
+    private static EnglishWords englishWords = null;
+
     private WordAdapter wordAdapter;
+
+    private EnglishWords() {
+    }
+
+    public static EnglishWords getEnglishWordObj(){
+        if(englishWords == null){
+            englishWords = new EnglishWords();
+        }
+        return englishWords;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -130,5 +143,9 @@ public class EnglishWords extends Fragment {
         });
         englishWordRecyclerView.setAdapter(wordAdapter);
         wordAdapter.notifyDataSetChanged();
+    }
+
+    public void myFilter(String searchInput){
+        wordAdapter.getFilter().filter(searchInput);
     }
 }
