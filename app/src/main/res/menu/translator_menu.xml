@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        app:showAsAction="always"
+        android:title="English"/>
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_arrow_drop_down_24"
+        android:title="language2"/>
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_compare_arrows_24"
+        android:title="language2"/>
+    <item
+        app:showAsAction="always"
+        android:title="Sinhala"/>
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_arrow_drop_down_24"
+        android:title="language2"/>
+</menu>

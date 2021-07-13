@@ -7,50 +7,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sinhaladictionary.fragments.DictionaryFragment;
 import com.example.sinhaladictionary.fragments.TranslatorFragment;
-import com.example.sinhaladictionary.models.EnglishWord;
-import com.example.sinhaladictionary.models.SinhalaWord;
 import com.google.android.material.navigation.NavigationView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private int menuResource;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -69,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
+        menuResource = R.menu.search_menu;
         mountDictionaryFragment();
         getSupportActionBar().setElevation(0);
 
@@ -86,8 +61,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Toast.makeText(this, "called", Toast.LENGTH_SHORT).show();
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.search_menu, menu);
+        menuInflater.inflate(menuResource, menu);
         return true;
     }
 
@@ -112,16 +88,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.drawer_dictionary:
                 mountDictionaryFragment();
                 drawerLayout.closeDrawer(GravityCompat.START);
+                menuResource = R.menu.search_menu;
                 break;
             case R.id.drawer_translator:
                 mountTranslatorFragment();
                 drawerLayout.closeDrawer(GravityCompat.START);
+                menuResource = R.menu.translator_menu;
                 break;
             case R.id.drawer_setting:
                 startActivity(intent);
+                break;
+            case R.id.drawer_about:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                openDialog();
                 break;
         }
         return true;
     }
 
+    public void openDialog() {
+        int width = (int)(getResources().getDisplayMetrics().widthPixels*0.95);
+        int height = (int)(getResources().getDisplayMetrics().heightPixels*0.95);
+
+        final Dialog dialog = new Dialog(this); // Context, this, etc.
+        dialog.setContentView(R.layout.about_diloag_box);
+        dialog.setTitle("About");
+        dialog.getWindow().setLayout(width, height);
+        dialog.show();
+    }
 }
