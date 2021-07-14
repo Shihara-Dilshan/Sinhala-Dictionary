@@ -73,6 +73,7 @@
                             android:background="#00FFFFFF"
                             android:hint="Touch to type English"
                             android:textSize="14sp"
+                            android:id="@+id/input_text"
                             android:textColor="#686868"
                             android:padding="10dp"
                             android:layout_height="wrap_content"/>
@@ -158,6 +159,7 @@
                                android:layout_width="match_parent"
                                android:layout_height="match_parent"
                                android:text="TRANSLATE"
+                               android:id="@+id/translate_btn"
                                android:textColor="@color/black"
                                android:drawableLeft="@drawable/ic_baseline_g_translate_24"
                                android:background="@color/green_dark"/>
@@ -245,6 +247,7 @@
                             android:layout_width="wrap_content"
                             android:background="#00FFFFFF"
                             android:textSize="14sp"
+                            android:id="@+id/result_text"
                             android:textColor="#686868"
                             android:padding="10dp"
                             android:layout_height="wrap_content"/>
