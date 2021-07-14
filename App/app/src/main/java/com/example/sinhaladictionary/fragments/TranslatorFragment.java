@@ -174,7 +174,7 @@ public class TranslatorFragment extends Fragment {
     }
 
     public void imageToText(String imageUrl, ProgressDialog progressDialog){
-        String postUrl = "https://classique-saucisson-85233.herokuapp.com/api/v2/ocr";
+        String postUrl = "https://voyage-vin-04691.herokuapp.com/api/v2/ocr";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
 
         JSONObject postData = new JSONObject();
@@ -189,7 +189,7 @@ public class TranslatorFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    inputText.setText(response.getString("result").replace("\\n", ""));
+                    inputText.setText(response.getString("result").replace("\n", "").replace("\r", ""));
                     progressDialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -203,7 +203,7 @@ public class TranslatorFragment extends Fragment {
         });
 
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
-                10000,
+                60000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
