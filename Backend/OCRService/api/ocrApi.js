@@ -5,7 +5,7 @@ const ocrService = require('./../service/ocrService');
 router.post('/', async(req, res) =>  {
     const data = req.body;
     const result = await ocrService(data);
-    res.send(result);
+    res.json({"result":result});
 });
 
 module.exports = router;

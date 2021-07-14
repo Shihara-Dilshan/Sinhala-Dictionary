@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "606720252019",
+    "project_id": "ocrstorage-f8786",
+    "storage_bucket": "ocrstorage-f8786.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606720252019:android:53e0a4de1a85b847fbb206",
+        "android_client_info": {
+          "package_name": "com.example.sinhaladictionary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606720252019-r157vd94d16fp7ha8dcc4ateaojbqktg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtjURJS_TDx4BiNFYcBkVCIggNtVkbyJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606720252019-r157vd94d16fp7ha8dcc4ateaojbqktg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

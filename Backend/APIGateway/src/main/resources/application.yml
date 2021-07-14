@@ -8,9 +8,9 @@ spring:
     gateway:
       routes:
         - id: OCR-SERVICE
-          uri: http://localhost:5001
+          uri: https://classique-saucisson-85233.herokuapp.com
           predicates: Path=/api/v2/ocr/**
         - id: TRANSLATE-SERVICE
-          uri: http://127.0.0.1:5000
+          uri: https://baroque-chaise-29236.herokuapp.com
           predicates:
             - Path=/api/v2/translate
