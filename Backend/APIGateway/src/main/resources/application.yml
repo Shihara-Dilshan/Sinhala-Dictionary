@@ -1,0 +1,16 @@
+server:
+  port: 9772
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: OCR-SERVICE
+          uri: http://localhost:5001
+          predicates: Path=/api/v2/ocr/**
+        - id: TRANSLATE-SERVICE
+          uri: http://127.0.0.1:5000
+          predicates:
+            - Path=/api/v2/translate
