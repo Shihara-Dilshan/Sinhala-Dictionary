@@ -50,10 +50,12 @@ public class EnglishWords extends Fragment {
     }
 
     public static EnglishWords getEnglishWordObj(){
-        if(englishWords == null){
-            englishWords = new EnglishWords();
+        synchronized (EnglishWords.class){
+            if(englishWords == null){
+                englishWords = new EnglishWords();
+            }
+            return englishWords;
         }
-        return englishWords;
     }
 
     @Override

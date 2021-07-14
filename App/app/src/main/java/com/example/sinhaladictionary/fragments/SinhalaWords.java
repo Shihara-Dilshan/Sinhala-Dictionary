@@ -45,10 +45,12 @@ public class SinhalaWords extends Fragment {
 
 
     public static SinhalaWords getSinhalaWordObj(){
-        if(sinhalaWords == null){
-            sinhalaWords = new SinhalaWords();
+        synchronized (SinhalaWords.class){
+            if(sinhalaWords == null){
+                sinhalaWords = new SinhalaWords();
+            }
+            return sinhalaWords;
         }
-        return sinhalaWords;
     }
 
     private SinhalaWords(){
